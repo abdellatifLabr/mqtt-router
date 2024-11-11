@@ -24,13 +24,12 @@ class MQTTRouter:
 
         return wrapper
 
-    def route(self, message):
-        topic = message.topic
+    def route(self, topic, message, context=None):
         for regex, defs in self.routes.items():
             match, _, params = self._match(re.compile(regex, 0), topic, defs.get("converters", {}))
             if match is not None:
                 for handler in defs["handlers"]:
-                    handler(message, **params)
+                    handler(message, context, **params)
 
     def _route_to_regex(self, route):
         """
