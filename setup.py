@@ -5,7 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="mqtt-router",
-    use_scm_version=True,
+    use_scm_version={
+        "version_scheme": "post-release",
+        "local_scheme": "no-local-version",
+    },
     setup_requires=["setuptools-scm"],
     author="Abdellatif Labreche",
     author_email="abdellatif.labreche@gmail.com",
