@@ -50,3 +50,15 @@ class RouterTestCase(TestCase):
         router.route(topic, message, context=context)
 
         handle_message.assert_called_once_with(message, context, streaming_key="key", count=1234)
+
+    def test_route_path_wildcard(self):
+        handle_message = Mock()
+        router = MQTTRouter()
+        router.add("telemetry/<path:rest>")(handle_message)
+
+        topic = "telemetry/devices/key/1234/data"
+        message = "Hello there!"
+        context = {"extra": "extra data"}
+        router.route(topic, message, context=context)
+
+        handle_message.assert_called_once_with(message, context, rest="devices/key/1234/data")
