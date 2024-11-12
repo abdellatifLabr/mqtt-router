@@ -1,8 +1,8 @@
 # MQTT Router
 
-MQTT Router a simple client agnostic mqtt message router based on topic.
+MQTT Router is a simple to use client-agnostic mqtt message router.
 
-You can use mqtt-router to organize mqtt message handlers using a simple and minimal
+You can use mqtt-router to declare mqtt message handlers using a simple and minimal
 python decorator syntax.
 
 mqtt-router helps you extract parameters from topics that contains wildcards and cast
